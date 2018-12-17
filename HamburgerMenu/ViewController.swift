@@ -92,6 +92,7 @@ class ViewController: UIViewController {
     
     //MARK: - Shadow View
     func addBlackTransparentView() -> UIView{
+        //Black Shadow on MainView(i.e on TabBarController) when side menu is opened.
         let blackView = self.tabbarContainerView.viewWithTag(blackTransparentViewTag)
         if blackView != nil{
             return blackView!
@@ -110,6 +111,7 @@ class ViewController: UIViewController {
     }
     
     func addShadowToView(){
+        //Gives Illusion that main view is above the side menu
         self.tabbarContainerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
         self.tabbarContainerView.layer.shadowOffset = CGSize(width: -1, height: 1)
         self.tabbarContainerView.layer.shadowRadius = 1
@@ -172,6 +174,7 @@ class ViewController: UIViewController {
     }
     
     @objc func closeWithoutAnimation(){
+        //To close Side Menu without animation
         let blackTransparentView = self.view.viewWithTag(self.blackTransparentViewTag)
         blackTransparentView?.alpha = 0
         blackTransparentView?.removeFromSuperview()
@@ -248,6 +251,7 @@ class ViewController: UIViewController {
 
 class HamburgerMenu{
     //Class To Implement Easy Functions To Open Or Close RearView
+    //Make object of this class and call functions
     func triggerSideMenu(){
         let notificationOpenOrCloseSideMenu = Notification.Name("notificationOpenOrCloseSideMenu")
         NotificationCenter.default.post(name: notificationOpenOrCloseSideMenu, object: nil)
